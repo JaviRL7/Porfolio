@@ -1,0 +1,67 @@
+/* Navbar.css */
+
+@import './font.css';
+
+/* Estilo general para la navbar */
+.navbar {
+  background-color: transparent; /* Asegúrate de que sea transparente */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; /* Para que esté sobre otros elementos */
+}
+
+/* Contenido del navbar */
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%; /* Ajusta según tu preferencia */
+  margin: auto;
+  padding: 1rem 0; /* Espaciado */
+}
+
+/* Logo del navbar */
+.navbar-logo {
+  width: 64px; /* Ajusta según tu preferencia */
+  height: 64px;
+  border-radius: 50%; /* Para hacerla redonda */
+}
+
+/* Estilos de los enlaces del navbar */
+.navbar-links {
+  font-family: 'Quilon', sans-serif; /* Aplica la fuente */
+  font-size: 1.5rem; /* Aumenta el tamaño de la fuente */
+}
+
+.navbar-links a {
+  margin: 0 1rem;
+  color: white; /* Color del texto */
+  text-decoration: none; /* Sin subrayado */
+  position: relative; /* Necesario para el pseudo-elemento */
+  transition: color 0.3s; /* Transición para el color */
+}
+
+/* Hover sobre los enlaces */
+.navbar-links a:hover {
+  color: white; /* Mantiene el color al hacer hover */
+}
+
+/* Efecto de tachado */
+.navbar-links a::after {
+  content: ''; /* Crea un pseudo-elemento */
+  position: absolute;
+  left: 0;
+  bottom: 30%; /* Posicionar el tachado un poco más abajo */
+  height: 4px; /* Grosor de la línea de tachado */
+  width: 100%; /* Ancho completo */
+  background-color: white; /* Color de la línea */
+  transform: scaleX(0); /* Comienza como invisible */
+  transition: transform 0.4s ease; /* Animación suave */
+  z-index: -1; /* Asegura que el tachado esté detrás del texto */
+}
+
+.navbar-links a:hover::after {
+  transform: scaleX(1); /* Escala el pseudo-elemento al hacer hover */
+}
