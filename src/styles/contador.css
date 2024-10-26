@@ -1,0 +1,22 @@
+.carousel-counter {
+  position: absolute;
+  right: 80px; /* Más separado del borde */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Más separado entre cada número */
+}
+
+.counter-number {
+  font-size: 1.5rem;
+  color: white;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.counter-number.active {
+  font-size: 2rem;
+  opacity: 1;
+  font-weight: bold;
+}

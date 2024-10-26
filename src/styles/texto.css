@@ -1,7 +1,18 @@
+.text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .carousel-text {
   position: absolute;
   bottom: 40%; /* Ajusta para subir el texto */
-  left: 10%; /* Ajusta para mover el texto a la derecha */
+  left: 20%; /* Ajusta para mover el texto a la derecha */
   font-size: 4rem; /* Tamaño de fuente más grande */
   color: white;
   font-weight: bold;

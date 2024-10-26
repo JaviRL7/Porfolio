@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Texto from "./components/Texto"; // Importa el componente de Texto
 import "./Carousel.css";
-import "./styles/texto.css"; // Importa el archivo CSS para el texto
+import "./styles/contador.css"; // Importa el archivo CSS para el contador
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [zoomIndex, setZoomIndex] = useState(null); // Índice de imagen que debe hacer zoom
   const slides = [
-    { src: "images/imagen1.jpg", bgColor: "#4B8BBE", text: "Texto 1" },
-    { src: "images/imagen2.jpg", bgColor: "#6C9A8A", text: "Texto 2" },
-    { src: "images/imagen3.jpg", bgColor: "#B8B9D1", text: "Texto 3" },
-    { src: "images/imagen4.jpg", bgColor: "#7D5B9D", text: "Texto 4" },
-    { src: "images/imagen5.jpg", bgColor: "#A5C2C8", text: "Texto 5" },
+    { src: "images/imagen1.jpg", bgColor: "#C2C8D4", text: "Texto 1" },
+    { src: "images/imagen2.jpg", bgColor: "#C14A30", text: "Texto 2" },
+    { src: "images/imagen3.jpg", bgColor: "#678298", text: "Texto 3" },
+    { src: "images/imagen4.jpg", bgColor: "#715296", text: "Texto 4" },
+    { src: "images/imagen5.jpg", bgColor: "#C9CF00", text: "Texto 5" },
     { src: "images/imagen6.jpg", bgColor: "#3A3A3A", text: "Texto 6" },
   ];
   const [isScrolling, setIsScrolling] = useState(false);
@@ -48,7 +49,7 @@ const Carousel = () => {
   }, [currentIndex]);
 
   useEffect(() => {
-    // Resetea el zoom y el texto cada vez que cambia el índice
+    // Resetea el zoom cada vez que cambia el índice
     setZoomIndex(null);
     const zoomTimeout = setTimeout(() => {
       setZoomIndex(currentIndex); // Activa el zoom para la nueva imagen
@@ -83,17 +84,20 @@ const Carousel = () => {
               animate={zoomIndex === index ? { scale: 1.5 } : { scale: 1 }} // Zoom más grande
               transition={zoomIndex === index ? { duration: 0.5, ease: "easeInOut" } : {}}
             />
-            <motion.h1
-              className="carousel-text"
-              initial={{ opacity: 0, y: 100 }}
-              animate={currentIndex === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              {slide.text}
-            </motion.h1>
           </motion.div>
         ))}
       </div>
+      <div className="carousel-counter">
+        {slides.map((_, index) => (
+          <div
+            key={index}
+            className={`counter-number ${currentIndex === index ? "active" : ""}`}
+          >
+            {index + 1}
+          </div>
+        ))}
+      </div>
+      <Texto currentIndex={currentIndex} slides={slides} /> {/* Añade el componente de Texto */}
     </div>
   );
 };
