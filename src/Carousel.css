@@ -1,3 +1,7 @@
+body {
+  transition: background-color 0.5s ease;
+}
+
 .carousel {
   position: relative;
   width: 100vw;
@@ -8,7 +12,7 @@
 .carousel-content {
   display: flex;
   flex-direction: column;
-  transition: transform 3s ease;
+  transition: transform 1s ease-in-out;
   width: 100%;
 }
 
@@ -16,15 +20,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
 
-img {
+.carousel-slide img {
   width: 100%;
   height: auto;
   max-width: 1200px;
   max-height: 600px;
   object-fit: cover;
+  transition: transform 1s ease-in-out;
 }
+
+.carousel-image {
+  transform-origin: center center;
+}
+
+.carousel-text {
+  position: absolute}

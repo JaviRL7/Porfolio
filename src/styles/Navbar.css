@@ -30,10 +30,7 @@
 }
 
 /* Estilos de los enlaces del navbar */
-.navbar-links {
-  font-family: 'Quilon', sans-serif; /* Aplica la fuente */
-  font-size: 1.5rem; /* Aumenta el tamaño de la fuente */
-}
+
 
 .navbar-links a {
   margin: 0 1rem;
