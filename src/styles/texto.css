@@ -6,15 +6,63 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Mueve los elementos más a la izquierda */
+  padding-left: 10%; /* Ajusta según la cantidad de desplazamiento necesario */
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px; /* Incrementa la separación entre el título y el subtítulo */
+}
+
+.text-content {
+  display: flex;
 }
 
 .carousel-text {
-  position: absolute;
-  bottom: 40%; /* Ajusta para subir el texto */
-  left: 20%; /* Ajusta para mover el texto a la derecha */
-  font-size: 4rem; /* Tamaño de fuente más grande */
+  font-size: 4rem;
   color: white;
   font-weight: bold;
+  white-space: nowrap; /* Asegura que el texto esté en una sola línea */
   transition: all 0.5s ease;
+}
+
+.subtext-content {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.carousel-subtext {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.carousel-subtext::before {
+  content: "";
+  position: absolute;
+  left: -50px; /* Posiciona la línea a la izquierda del texto */
+  top: 50%; /* Centra verticalmente la línea sobre el texto */
+  transform: translateY(-50%); /* Ajuste para centrar perfectamente */
+  width: 40px; /* Longitud inicial de la línea */
+  height: 3px; /* Grosor de la línea */
+  background-color: white;
+  transition: width 0.3s ease;
+  z-index: 1; /* Asegura que la línea esté sobre el texto */
+}
+
+.carousel-subtext:hover::before {
+  width: 150%; /* La línea se extiende para tachar el texto al hacer hover */
+}
+
+
+
+* {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700;
 }

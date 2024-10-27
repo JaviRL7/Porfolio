@@ -1,64 +1,80 @@
-/* Navbar.css */
-
 @import './font.css';
 
 /* Estilo general para la navbar */
 .navbar {
-  background-color: transparent; /* Asegúrate de que sea transparente */
+  background-color: transparent;
   position: fixed;
-  top: 0;
+  top: 1rem; /* Da margen superior al navbar */
   left: 0;
   width: 100%;
-  z-index: 10; /* Para que esté sobre otros elementos */
+  z-index: 10;
+  padding-top: 1rem;
 }
 
 /* Contenido del navbar */
 .navbar-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 60%; /* Ajusta según tu preferencia */
-  margin: auto;
-  padding: 1rem 0; /* Espaciado */
+  width: 100%;
+  padding: 1rem 0;
+  position: relative;
+}
+
+/* Contenedor que mantiene el logo a la izquierda */
+.navbar-left {
+  position: absolute;
+  left: 50px; /* Ajusta para mover el logo más a la izquierda, pero no demasiado */
 }
 
 /* Logo del navbar */
 .navbar-logo {
-  width: 64px; /* Ajusta según tu preferencia */
+  width: 64px;
   height: 64px;
-  border-radius: 50%; /* Para hacerla redonda */
+  border-radius: 50%;
+  margin-left: 300px;
 }
 
 /* Estilos de los enlaces del navbar */
+.navbar-links {
+  display: flex;
+  gap: 5rem; /* Espacio entre los enlaces */
+}
 
+/* Contenedor centrado que contiene los enlaces */
+.navbar-center {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
 
 .navbar-links a {
-  margin: 0 1rem;
-  color: white; /* Color del texto */
-  text-decoration: none; /* Sin subrayado */
-  position: relative; /* Necesario para el pseudo-elemento */
-  transition: color 0.3s; /* Transición para el color */
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
 }
 
 /* Hover sobre los enlaces */
 .navbar-links a:hover {
-  color: white; /* Mantiene el color al hacer hover */
+  color: white;
 }
 
 /* Efecto de tachado */
 .navbar-links a::after {
-  content: ''; /* Crea un pseudo-elemento */
+  content: '';
   position: absolute;
   left: 0;
-  bottom: 30%; /* Posicionar el tachado un poco más abajo */
-  height: 4px; /* Grosor de la línea de tachado */
-  width: 100%; /* Ancho completo */
-  background-color: white; /* Color de la línea */
-  transform: scaleX(0); /* Comienza como invisible */
-  transition: transform 0.4s ease; /* Animación suave */
-  z-index: -1; /* Asegura que el tachado esté detrás del texto */
+  bottom: -4px;
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  z-index: -1;
 }
 
 .navbar-links a:hover::after {
-  transform: scaleX(1); /* Escala el pseudo-elemento al hacer hover */
+  transform: scaleX(1);
 }

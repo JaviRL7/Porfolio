@@ -8,8 +8,8 @@ const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [zoomIndex, setZoomIndex] = useState(null); // Índice de imagen que debe hacer zoom
   const slides = [
-    { src: "images/imagen1.jpg", bgColor: "#C2C8D4", text: "Texto 1" },
-    { src: "images/imagen2.jpg", bgColor: "#C14A30", text: "Texto 2" },
+    { src: "images/imagen1.jpg", bgColor: "#C2C8D4", text: "Soy Javier Rodriguez" },
+    { src: "images/imagen2.jpg", bgColor: "#C14A30", text: "Nectar" },
     { src: "images/imagen3.jpg", bgColor: "#678298", text: "Texto 3" },
     { src: "images/imagen4.jpg", bgColor: "#715296", text: "Texto 4" },
     { src: "images/imagen5.jpg", bgColor: "#C9CF00", text: "Texto 5" },

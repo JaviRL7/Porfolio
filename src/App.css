@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'CircularStd-Bold';
+  src: url('./assets/fonts/FontsFree-Net-CircularStd-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  font-family: 'CircularStd-Bold', sans-serif !important;
+}

@@ -17,16 +17,31 @@ const Texto = ({ currentIndex, slides }) => {
   return (
     <div className="text-container">
       {slides.map((slide, index) => (
-        <motion.h1
-          key={index}
-          className="carousel-text"
-          initial={{ y: "100vh" }}
-          animate={showText && currentIndex === index ? { y: 0 } : { y: "100vh" }}
-          transition={{ duration: 0.5 }}
-          style={{ display: showText && currentIndex === index ? "block" : "none" }}
-        >
-          {slide.text}
-        </motion.h1>
+        <div key={index} className="text-wrapper">
+          <motion.div
+            className="text-content"
+            initial={{ y: "100vh" }}
+            animate={showText && currentIndex === index ? { y: 0 } : { y: "100vh" }}
+            transition={{ duration: 0.5 }}
+            style={{ display: showText && currentIndex === index ? "block" : "none" }}
+          >
+            <h1 className="carousel-text">{slide.text}</h1>
+          </motion.div>
+          <motion.div
+            className="subtext-content"
+            initial={{ x: "-100vw" }}
+            animate={showText && currentIndex === index ? { x: 0 } : { x: "-100vw" }}
+            transition={{ duration: 0.5 }}
+            style={{ display: showText && currentIndex === index ? "flex" : "none" }}
+          >
+            <motion.h4
+              className="carousel-subtext"
+              whileHover={{ scale: 1.1 }}
+            >
+              Ver Proyecto
+            </motion.h4>
+          </motion.div>
+        </div>
       ))}
     </div>
   );
