@@ -39,17 +39,3 @@ body {
   transform-origin: center center;
 }
 
-.carousel-text {
-  position: absolute}
-
-
-  .carousel-text {
-    position: absolute;
-    bottom: 40%; /* Ajusta para subir el texto */
-    left: 20%; /* Ajusta para mover el texto a la derecha */
-    font-size: 4rem; /* Tamaño de fuente más grande */
-    color: white;
-    font-weight: bold;
-    transition: all 0.5s ease;
-  }
-  

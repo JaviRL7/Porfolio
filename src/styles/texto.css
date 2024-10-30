@@ -6,27 +6,40 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Mueve los elementos más a la izquierda */
-  padding-left: 10%; /* Ajusta según la cantidad de desplazamiento necesario */
+  justify-content: flex-start;
+  padding-left: 5%; /* Ajustado para mover todo más a la izquierda */
 }
 
 .text-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 50px; /* Incrementa la separación entre el título y el subtítulo */
+  gap: 20px; /* Espacio entre las filas de texto */
 }
 
 .text-content {
   display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre el título y el subtítulo */
 }
 
 .carousel-text {
   font-size: 4rem;
   color: white;
   font-weight: bold;
-  white-space: nowrap; /* Asegura que el texto esté en una sola línea */
+  white-space: nowrap;
   transition: all 0.5s ease;
+}
+
+.green-text {
+  font-size: 5rem; /* Tamaño de fuente más grande */
+  text-transform: uppercase;
+  color: #004d00; /* Color verde botella oscuro */
+  margin-left: 0; /* Sin margen a la izquierda */
+  display: inline-block;
+}
+.carousel-text .green-text {
+  left: 20%; 
 }
 
 .subtext-content {
@@ -43,26 +56,21 @@
   transition: all 0.3s ease;
 }
 
-.carousel-subtext::before {
-  content: "";
+.subtext-line {
   position: absolute;
-  left: -50px; /* Posiciona la línea a la izquierda del texto */
-  top: 50%; /* Centra verticalmente la línea sobre el texto */
-  transform: translateY(-50%); /* Ajuste para centrar perfectamente */
-  width: 40px; /* Longitud inicial de la línea */
-  height: 3px; /* Grosor de la línea */
+  left: -300px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 3px;
   background-color: white;
+  z-index: -1;
+  width: 250px;
   transition: width 0.3s ease;
-  z-index: 1; /* Asegura que la línea esté sobre el texto */
 }
 
-.carousel-subtext:hover::before {
-  width: 150%; /* La línea se extiende para tachar el texto al hacer hover */
+.subtext-content:hover .subtext-line {
+  width: 550px;
+  transition: width 0.3s ease;
 }
 
 
-
-* {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 700;
-}

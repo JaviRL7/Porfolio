@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 import Texto from "./components/Texto"; // Importa el componente de Texto
 import "./Carousel.css";
 import "./styles/contador.css"; // Importa el archivo CSS para el contador
 
-const Carousel = () => {
+const Carousel = forwardRef((props, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [zoomIndex, setZoomIndex] = useState(null); // Índice de imagen que debe hacer zoom
+  const { t } = useTranslation();
   const slides = [
-    { src: "images/imagen1.jpg", bgColor: "#C2C8D4", text: "Soy Javier Rodriguez" },
+    { src: "images/imagen12.jpeg", bgColor: "#C2C8D4", text: t('carousel.intro') },
     { src: "images/imagen2.jpg", bgColor: "#C14A30", text: "Nectar" },
     { src: "images/imagen3.jpg", bgColor: "#678298", text: "Texto 3" },
     { src: "images/imagen4.jpg", bgColor: "#715296", text: "Texto 4" },
@@ -16,6 +18,12 @@ const Carousel = () => {
     { src: "images/imagen6.jpg", bgColor: "#3A3A3A", text: "Texto 6" },
   ];
   const [isScrolling, setIsScrolling] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    scrollToTop() {
+      setCurrentIndex(0);
+    }
+  }));
 
   const handleScroll = (event) => {
     if (isScrolling) return;
@@ -97,9 +105,9 @@ const Carousel = () => {
           </div>
         ))}
       </div>
-      <Texto currentIndex={currentIndex} slides={slides} /> {/* Añade el componente de Texto */}
+      <Texto currentIndex={currentIndex} slides={slides} />
     </div>
   );
-};
+});
 
 export default Carousel;

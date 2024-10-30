@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "contact": "Contacto",
+    "github": "Github",
+    "linkedin": "LinkedIn",
+    "projects": "Proyectos",
+    "en": "EN"
+  },
+  "carousel": {
+    "intro": "Soy Javier Rodriguez Lopez",
+    "frontend": "Desarrollador FRONT END"
+
+  }
+}
