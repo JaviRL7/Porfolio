@@ -1,20 +1,21 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { motion } from "framer-motion";
-import { useTranslation } from 'react-i18next';
-import Texto from "./components/Texto"; // Importa el componente de Texto
+import { useTranslation } from "react-i18next";
+import Texto from "./components/Texto";
 import "./Carousel.css";
-import "./styles/contador.css"; // Importa el archivo CSS para el contador
+import "./styles/contador.css";
 
 const Carousel = forwardRef((props, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [zoomIndex, setZoomIndex] = useState(null); // Índice de imagen que debe hacer zoom
+  const [zoomIndex, setZoomIndex] = useState(null);
+  const [hoverZoomIndex, setHoverZoomIndex] = useState(null); // Nuevo estado para el zoom adicional
   const { t } = useTranslation();
   const slides = [
-    { src: "images/imagen12.jpeg", bgColor: "#C2C8D4", text: t('carousel.intro') },
-    { src: "images/imagen2.jpg", bgColor: "#C14A30", text: "Nectar" },
-    { src: "images/imagen3.jpg", bgColor: "#678298", text: "Texto 3" },
-    { src: "images/imagen4.jpg", bgColor: "#715296", text: "Texto 4" },
-    { src: "images/imagen5.jpg", bgColor: "#C9CF00", text: "Texto 5" },
+    { src: "images/imagen11.jpg", bgColor: "#C2C8D4", text: t("carousel.intro") },
+    { src: "images/imagen6.jpg", bgColor: "#C14A30", text: "Nectar" },
+    { src: "images/imagen7.jpg", bgColor: "#678298", text: "Texto 3" },
+    { src: "images/imagen8.jpg", bgColor: "#715296", text: "Texto 4" },
+    { src: "images/imagen8.jpg", bgColor: "#C9CF00", text: "Texto 5" },
     { src: "images/imagen6.jpg", bgColor: "#3A3A3A", text: "Texto 6" },
   ];
   const [isScrolling, setIsScrolling] = useState(false);
@@ -22,14 +23,15 @@ const Carousel = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     scrollToTop() {
       setCurrentIndex(0);
-    }
+    },
   }));
 
   const handleScroll = (event) => {
     if (isScrolling) return;
     event.preventDefault();
     setIsScrolling(true);
-    setZoomIndex(null); // Reseteamos el zoom al iniciar el scroll
+    setZoomIndex(null);
+    setHoverZoomIndex(null); // Resetear el hoverZoom al cambiar de imagen
     if (event.deltaY > 0) {
       setCurrentIndex((prevIndex) =>
         prevIndex === slides.length - 1 ? 0 : prevIndex + 1
@@ -57,14 +59,18 @@ const Carousel = forwardRef((props, ref) => {
   }, [currentIndex]);
 
   useEffect(() => {
-    // Resetea el zoom cada vez que cambia el índice
     setZoomIndex(null);
     const zoomTimeout = setTimeout(() => {
-      setZoomIndex(currentIndex); // Activa el zoom para la nueva imagen
-    }, 800); // Ajusta el tiempo según sea necesario: 0.6s + 0.2s
+      setZoomIndex(currentIndex);
+    }, 800);
 
-    return () => clearTimeout(zoomTimeout); // Limpiar el timeout al desmontar
+    return () => clearTimeout(zoomTimeout);
   }, [currentIndex]);
+
+  // Función para manejar el hover en "Ver Proyecto"
+  const handleHoverProject = (isHovered) => {
+    setHoverZoomIndex(isHovered ? currentIndex : null);
+  };
 
   return (
     <div className="carousel">
@@ -89,8 +95,17 @@ const Carousel = forwardRef((props, ref) => {
               src={slide.src}
               alt={`Slide ${index + 1}`}
               className="carousel-image"
-              animate={zoomIndex === index ? { scale: 1.5 } : { scale: 1 }} // Zoom más grande
-              transition={zoomIndex === index ? { duration: 0.5, ease: "easeInOut" } : {}}
+              animate={
+                hoverZoomIndex === index
+                  ? { scale: 1.55 } // Aumentar el zoom adicional al hacer hover
+                  : zoomIndex === index
+                  ? { scale: 1.5 }
+                  : { scale: 1 }
+              }
+              transition={{
+                duration: hoverZoomIndex === index ? 0.1 : 1,
+                ease: "easeInOut",
+              }}
             />
           </motion.div>
         ))}
@@ -105,7 +120,7 @@ const Carousel = forwardRef((props, ref) => {
           </div>
         ))}
       </div>
-      <Texto currentIndex={currentIndex} slides={slides} />
+      <Texto currentIndex={currentIndex} slides={slides} onHoverProject={handleHoverProject} />
     </div>
   );
 });

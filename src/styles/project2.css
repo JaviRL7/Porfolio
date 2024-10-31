@@ -1,0 +1,30 @@
+/* Asegúrate de que no haya márgenes ni padding en el body */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+/* Configura el contenedor principal */
+.project2-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Ajusta la sección de la imagen para que ocupe el 100% del ancho de la ventana */
+.image-section {
+  width: 100vw; /* Asegura que ocupe todo el ancho de la ventana */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita cualquier desplazamiento adicional */
+}
+
+.full-image {
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+}

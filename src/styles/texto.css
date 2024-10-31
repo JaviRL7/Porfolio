@@ -74,3 +74,11 @@
 }
 
 
+.carousel-subtext {
+  transition: transform 0.15s ease-out;
+}
+
+.carousel-subtext:hover {
+  transform: scale(1.2); /* Escala adicional en hover */
+  transition: transform 0.15s ease-out; /* Animación rápida de entrada */
+}

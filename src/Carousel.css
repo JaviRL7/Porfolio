@@ -32,10 +32,16 @@ body {
   max-width: 1200px;
   max-height: 600px;
   object-fit: cover;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.7s ease-in-out;
 }
 
 .carousel-image {
   transform-origin: center center;
 }
 
+
+
+.carousel-subtext:hover {
+  cursor: pointer;
+}
+/*Hay que separar las animaciones del hover y del caroussel*/
