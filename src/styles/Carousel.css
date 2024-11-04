@@ -1,0 +1,120 @@
+/* Estilos generales */
+body {
+  /* Transición suave del color de fondo al cambiarlo */
+  transition: background-color 0.5s ease;
+}
+
+/* Contenedor principal del carrusel */
+.carousel {
+  position: relative;  /* Posición relativa para poder colocar elementos en base a este contenedor */
+  width: 100vw;        /* Ancho total de la ventana para ocupar toda la pantalla */
+  height: 100vh;       /* Alto total de la ventana para ocupar toda la pantalla */
+  overflow: hidden;    /* Oculta el contenido que se desborda del contenedor */
+}
+
+/* Contenido del carrusel */
+.carousel-content {
+  display: flex;              /* Los elementos del carrusel se colocan en fila */
+  flex-direction: column;     /* Coloca los elementos en una columna vertical */
+  transition: transform 1s ease-in-out;  /* Transición para el movimiento del carrusel */
+  width: 100%;                /* Ocupa todo el ancho del contenedor principal */
+}
+
+/* Cada diapositiva individual dentro del carrusel */
+.carousel-slide {
+  display: flex;               /* Los elementos se colocan en fila (horizontal) */
+  justify-content: center;     /* Centra el contenido horizontalmente */
+  align-items: center;         /* Centra el contenido verticalmente */
+  position: relative;          /* Posición relativa para ajustar contenido interno */
+  width: 100vw;                /* Ocupa todo el ancho de la ventana */
+  height: 100vh;               /* Ocupa todo el alto de la ventana */
+  overflow: hidden;            /* Oculta cualquier contenido que desborde del contenedor */
+}
+
+/* Imagen dentro de cada diapositiva del carrusel */
+.carousel-slide img {
+  width: 100%;                  /* La imagen ocupa todo el ancho de la diapositiva */
+  height: auto;                 /* Ajuste proporcional de la altura */
+  max-width: 1200px;            /* Ancho máximo para limitar el tamaño en pantallas grandes */
+  max-height: 600px;            /* Alto máximo para limitar el tamaño en pantallas grandes */
+  object-fit: cover;            /* Recorta la imagen para que se ajuste al tamaño definido */
+  transition: transform 0.5s ease-in-out;  /* Transición suave para los efectos de transformación */
+}
+
+/* Definición del centro de transformación de la imagen */
+.carousel-image {
+  transform-origin: center center;  /* Fija el centro de la imagen como el punto de transformación */
+}
+
+/* Efecto hover para el subtítulo en el carrusel */
+.carousel-subtext:hover {
+  cursor: pointer;               /* Cambia el cursor a un puntero cuando se pasa sobre el subtítulo */
+}
+
+/* Carousel.css */
+.carousel-subtext {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  transition: transform 0.15s ease-out; /* Asegúrate de que esto sea rápido */
+}
+
+.carousel-subtext:hover {
+  transform: scale(1.2); /* Zoom rápido al hacer hover */
+  transition: transform 0.15s ease-out; /* Animación rápida de entrada */
+}
+
+.vertical-line {
+  position: absolute;
+  bottom: 0; /* Alinea la línea con el borde inferior */
+  left: 50%; /* Centra la línea horizontalmente */
+  transform: translateX(-50%);
+  width: 2px; /* Ancho de la línea */
+  height: 0; /* Inicialmente, la altura es 0 */
+  background-color: white;
+  opacity: 1; /* Totalmente visible al inicio */
+  animation: falling-line 2s infinite ease-in-out; /* Animación en bucle */
+}
+
+@keyframes falling-line {
+  0% {
+    height: 0; /* Comienza en 0px */
+    opacity: 0; /* Comienza invisible */
+    transform: translateX(-50%) translateY(100%); /* Comienza desde el borde inferior */
+  }
+  50% {
+    height: 120px; /* Crece a 120px */
+    opacity: 1; /* Totalmente visible */
+    transform: translateX(-50%) translateY(0); /* Se sitúa en la parte superior */
+  }
+  100% {
+    height: 0; /* Se encoge de nuevo a 0px */
+    opacity: 0; /* Se desvanece */
+    transform: translateX(-50%) translateY(100%); /* Vuelve a la parte inferior */
+  }
+}
+.vertical-line {
+  position: fixed; /* Fija en la parte inferior de la pantalla */
+  left: 50%; /* Centrado horizontalmente */
+  width: 1px; /* Ancho inicial de la gota */
+  height: 0; /* Altura inicial de la gota */
+  background-color: white; /* Color de la gota */
+  transform: translateX(-50%); /* Centrar la línea */
+  animation: drop 3s ease-in-out infinite; /* Animación en bucle */
+}
+
+@keyframes drop {
+  0% {
+      height: 0; /* Comienza sin altura */
+      opacity: 0; /* Comienza invisible */
+  }
+  50% {
+      height: 120px; /* Crece a 120px en el medio de la animación */
+      opacity: 1; /* Totalmente visible en el medio de la animación */
+  }
+  100% {
+      height: 0; /* Vuelve a la altura inicial */
+      opacity: 0; /* Vuelve a ser invisible */
+  }
+}

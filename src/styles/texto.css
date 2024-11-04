@@ -1,3 +1,4 @@
+/* Contenedor principal para el texto */
 .text-container {
   position: absolute;
   top: 0;
@@ -10,6 +11,7 @@
   padding-left: 5%; /* Ajustado para mover todo más a la izquierda */
 }
 
+/* Contenedor para cada bloque de texto */
 .text-wrapper {
   display: flex;
   flex-direction: column;
@@ -17,68 +19,66 @@
   gap: 20px; /* Espacio entre las filas de texto */
 }
 
+/* Contenido principal del texto */
 .text-content {
   display: flex;
   flex-direction: column;
   gap: 10px; /* Espacio entre el título y el subtítulo */
 }
 
+/* Estilo para el texto principal del carrusel */
 .carousel-text {
   font-size: 4rem;
   color: white;
   font-weight: bold;
   white-space: nowrap;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease; /* Transición para efectos generales */
 }
 
+/* Estilo para el subtítulo en verde */
 .green-text {
   font-size: 5rem; /* Tamaño de fuente más grande */
   text-transform: uppercase;
   color: #004d00; /* Color verde botella oscuro */
-  margin-left: 0; /* Sin margen a la izquierda */
-  display: inline-block;
-}
-.carousel-text .green-text {
-  left: 20%; 
+  display: inline-block; /* Asegura que se comporte como bloque en línea */
 }
 
+/* Contenedor para el subtítulo y el enlace del proyecto */
 .subtext-content {
   display: flex;
   align-items: center;
-  position: relative;
+  position: relative; /* Permite posicionar elementos hijos */
 }
 
-.carousel-subtext {
+/* Estilo para el enlace del proyecto */
+.project-link {
   font-size: 2rem;
   color: white;
   font-weight: bold;
-  position: relative;
-  transition: all 0.3s ease;
+  position: relative; /* Necesario para efectos de hover */
+  transition: transform 0.1s ease-out; /* Animación rápida para el hover */
 }
 
+/* Efecto hover para el enlace "Ver Proyecto" */
+.project-link:hover {
+  transform: scale(1.1); /* Escala ligera en hover */
+}
+
+/* Línea que acompaña al subtítulo */
 .subtext-line {
   position: absolute;
-  left: -300px;
+  left: -300px; /* Ajuste inicial fuera de la vista */
   top: 50%;
   transform: translateY(-50%);
   height: 3px;
   background-color: white;
-  z-index: -1;
-  width: 250px;
-  transition: width 0.3s ease;
+  z-index: -1; /* Coloca detrás del texto */
+  width: 250px; /* Ancho inicial */
+  transition: width 0.3s ease; /* Transición para el ancho */
 }
 
+/* Expande la línea en hover sobre el subtítulo */
 .subtext-content:hover .subtext-line {
-  width: 550px;
-  transition: width 0.3s ease;
-}
-
-
-.carousel-subtext {
-  transition: transform 0.15s ease-out;
-}
-
-.carousel-subtext:hover {
-  transform: scale(1.2); /* Escala adicional en hover */
-  transition: transform 0.15s ease-out; /* Animación rápida de entrada */
+  width: 550px; /* Ancho expandido al hacer hover */
+  transition: width 0.3s ease; /* Mantiene la transición suave */
 }
