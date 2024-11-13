@@ -23,11 +23,12 @@ const CarouselContent = ({ slides, currentIndex, zoomIndex, hoverZoomIndex, hand
           />
           {/* Línea vertical debajo de la imagen */}
           
-  <div class="vertical-line"></div>
-
+          
         </motion.div>
       ))}
+      
     </div>
+    
   );
 };
 

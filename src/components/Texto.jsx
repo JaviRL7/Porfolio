@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react"; 
-import { motion } from "framer-motion"; 
-import "../styles/texto.css"; 
+// Texto.jsx
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // Importar useNavigate
+import "../styles/texto.css";
 
-const Texto = ({ currentIndex, slides, onHoverProject, onImageClick }) => {
+const Texto = ({ currentIndex, slides, onHoverProject }) => {
   const [showText, setShowText] = useState(false);
   const [showProjectLink, setShowProjectLink] = useState(false);
+  const navigate = useNavigate(); // Inicializar el hook de navegación
 
   useEffect(() => {
     setShowText(false);
     setShowProjectLink(false);
 
-    // Cambiar el tiempo de entrada del texto a 800 ms (0.8 segundos)
     const textTimeout = setTimeout(() => {
       setShowText(true);
-    }, 800); // Ahora es 800 ms
+    }, 800);
 
-    // Mantener el tiempo de entrada del enlace del proyecto a 1300 ms
     const projectLinkTimeout = setTimeout(() => {
       setShowProjectLink(true);
-    }, 1300); // Sigue siendo 1300 ms
+    }, 1300);
 
     return () => {
       clearTimeout(textTimeout);
@@ -26,16 +27,20 @@ const Texto = ({ currentIndex, slides, onHoverProject, onImageClick }) => {
     };
   }, [currentIndex]);
 
+  const handleProjectClick = () => {
+    navigate("/project2"); // Navegar a /project2 al hacer clic
+  };
+
   return (
     <div className="text-container">
       {slides.map((slide, index) => (
         <div key={index} className="text-wrapper">
           <motion.div
             className="text-content"
-            initial={{ y: "100vh" }} 
-            animate={showText && currentIndex === index ? { y: 0 } : { y: "100vh" }} 
-            transition={{ duration: 0.5 }} 
-            style={{ display: showText && currentIndex === index ? "block" : "none" }} 
+            initial={{ y: "100vh" }}
+            animate={showText && currentIndex === index ? { y: 0 } : { y: "100vh" }}
+            transition={{ duration: 0.5 }}
+            style={{ display: showText && currentIndex === index ? "block" : "none" }}
           >
             <h1 className="carousel-text">{slide.text}</h1>
             <h2 className="green-text">Desarrollador Front End</h2>
@@ -43,22 +48,22 @@ const Texto = ({ currentIndex, slides, onHoverProject, onImageClick }) => {
 
           <motion.div
             className="subtext-content"
-            initial={{ y: "100vh" }} 
-            animate={showText && currentIndex === index ? { y: 10 } : { y: "100vh" }} 
-            transition={{ duration: 0.5 }} 
-            style={{ display: showText && currentIndex === index ? "flex" : "none" }} 
+            initial={{ y: "100vh" }}
+            animate={showText && currentIndex === index ? { y: 10 } : { y: "100vh" }}
+            transition={{ duration: 0.5 }}
+            style={{ display: showText && currentIndex === index ? "flex" : "none" }}
           >
             <motion.div className="subtext-line"></motion.div>
 
             {currentIndex === 1 && (
               <motion.h4
                 className="project-link"
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: showProjectLink ? 1 : 0 }} 
-                transition={{ duration: 0.1 }} 
-                onMouseEnter={() => onHoverProject(true)} 
-                onMouseLeave={() => onHoverProject(false)} 
-                onClick={() => onImageClick(slide.src, slide.text)} 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: showProjectLink ? 1 : 0 }}
+                transition={{ duration: 0.1 }}
+                onMouseEnter={() => onHoverProject(true)}
+                onMouseLeave={() => onHoverProject(false)}
+                onClick={handleProjectClick} // Usar handleProjectClick al hacer clic
               >
                 Ver Proyecto
               </motion.h4>

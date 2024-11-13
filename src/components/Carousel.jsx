@@ -84,8 +84,14 @@ const Carousel = forwardRef((props, ref) => {
       />
       <CarouselCounter slides={slides} currentIndex={currentIndex} />
       <Texto currentIndex={currentIndex} slides={slides} onHoverProject={handleHoverProject} />
+
+      {/* Indicador de scroll */}
+      <span className="scroll-indicator" style={{ opacity: 1 }}>
+        <span className="scroll-indicator__line"></span>
+        
+      </span>
     </div>
-  );
+);
 });
 
 export default Carousel;

@@ -1,0 +1,7 @@
+/* styles/AnimatedLine.css */
+.animated-line {
+  background-color: white; /* Color de la línea */
+  width: 4px;              /* Ancho de la línea */
+  height: 0;               /* Altura inicial (la animación controlará esto) */
+  margin: 20px auto;       /* Centra la línea horizontalmente entre las imágenes */
+}
