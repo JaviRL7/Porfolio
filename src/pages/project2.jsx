@@ -40,20 +40,26 @@ const Project2 = () => {
     <div className="project-container">
       {/* Video Principal */}
       <div className="hero-section">
-        <div className="scroll-indicator">
-          <div className="indicator-frame">
-            <div className="indicator-dot"></div>
-          </div>
-        </div>
-        <video className="hero-video" autoPlay muted loop>
-          <source src="/images/video/video1.mp4" type="video/mp4" />
-          Tu navegador no soporta el formato de video.
-        </video>
-        <div className="hero-overlay">
-          <h1 className="main-title">Gunlim</h1>
-          <h2 className="subtitle">Donde conoces a las leyendas</h2>
-        </div>
-      </div>
+  <div className="scroll-indicator">
+    <div className="indicator-frame">
+      <div className="indicator-dot"></div>
+    </div>
+  </div>
+  <iframe
+    className="hero-video"
+    src="https://www.youtube.com/embed/mf72jNoMqL0?autoplay=1&mute=1&loop=1&playlist=mf72jNoMqL0&controls=0&showinfo=0&modestbranding=1&disablekb=1&iv_load_policy=3"
+    frameBorder="0"
+    allow="autoplay; encrypted-media"
+    allowFullScreen
+    title="Gunlim Video"
+  ></iframe>
+  <div className="hero-overlay">
+    <h1 className="main-title">Gunlim</h1>
+    <h2 className="subtitle">Donde conoces a las leyendas</h2>
+  </div>
+</div>
+
+
 
       {/* Primera Sección: Introducción */}
       <div className="red-bg-section">
