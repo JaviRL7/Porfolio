@@ -21,14 +21,14 @@ const CarouselContent = ({ slides, currentIndex, zoomIndex, hoverZoomIndex, hand
             animate={hoverZoomIndex === index ? { scale: 1.55 } : zoomIndex === index ? { scale: 1.6 } : { scale: 1 }}
             transition={{ duration: hoverZoomIndex === index ? 0.1 : 1, ease: "easeInOut" }}
           />
-          {/* Línea vertical debajo de la imagen */}
-          
-          
+
+          {/* Scroll Indicator */}
+          <span className="scroll-indicator" style={{ opacity: currentIndex === index ? 1 : 0 }}>
+            <span className="scroll-indicator__line"></span>
+          </span>
         </motion.div>
       ))}
-      
     </div>
-    
   );
 };
 

@@ -1,30 +1,419 @@
-/* Asegúrate de que no haya márgenes ni padding en el body */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+/* Configuración global */
 body {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Evita el scroll horizontal */
+  background-color: #ffffff;
 }
 
-/* Configura el contenedor principal */
-.project2-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Texto destacado */
+.text-highlight {
+  color: #FF3F4F;
+}
+.material-icons {
+  font-size: 30px; /* Tamaño del icono */
+  color: #1eaa4d; /* Color del icono */
+  margin: 0 10px; /* Espaciado entre iconos */
+}
+
+/* Hero Section */
+.hero-section {
   width: 100%;
-}
-
-/* Ajusta la sección de la imagen para que ocupe el 100% del ancho de la ventana */
-.image-section {
-  width: 100vw; /* Asegura que ocupe todo el ancho de la ventana */
   height: 100vh;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Evita cualquier desplazamiento adicional */
+  overflow: hidden;
 }
 
-.full-image {
-  width: 100%; /* Ocupa todo el ancho del contenedor */
-  height: 100%; /* Ocupa toda la altura del contenedor */
-  object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
 }
+
+.hero-overlay {
+  position: absolute;
+  left: 20px;
+  top: 30%;
+  color: white;
+  z-index: 10;
+  text-align: left;
+}
+
+.main-title {
+  font-weight: 900;
+  font-size: 6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 4s steps(20) forwards;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 3rem;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeIn 3s 4s forwards;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 40px;
+}
+
+.indicator-frame {
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+  border-radius: 20px;
+  position: relative;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollMove 3s infinite;
+}
+
+@keyframes scrollMove {
+  0%, 100% {
+    top: 10%;
+  }
+  50% {
+    top: 80%;
+  }
+}
+
+/* Secciones generales */
+.section-spacing {
+  margin: 80px 0;
+}
+
+.red-bg-section {
+  background-color: #FF3F4F;
+  padding: 96px 20px;
+  color: white;
+  text-align: center;
+}
+
+.white-bg-section {
+  background-color: white;
+  padding: 96px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-weight: 900;
+  font-size: 3rem;
+  margin-bottom: 48px;
+}
+
+.section-description {
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+/* Imagen centrada */
+.image-container {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.centered-image {
+  max-width: 60%;
+  border: 5px solid #FF3F4F;
+  border-radius: 10px;
+}
+
+/* Galería */
+.gallery-section {
+  padding: 80px 20px;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.gallery-item {
+  width: 30%;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.video-container {
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.video-container video {
+  max-width: 55%;
+  border-radius: 10px;
+}
+
+/* Layout fila */
+.row-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px; /* Espaciado entre elementos */
+  padding: 72px 20px;
+}
+
+.row-image {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Centra la imagen horizontalmente */
+}
+
+.responsive-image {
+  max-width: 100%; /* Reduce el ancho para mayor margen */
+  border-radius: 10px;
+}
+
+/* Divisor vertical */
+.vertical-divider {
+  width: 5px;
+  background-color: #000000; /* Gris suave */
+  height: 100px;
+  margin: 0 24px;
+  align-self: center; /* Centra verticalmente */
+}
+
+.row-text {
+  flex: 1.5; /* Da más espacio al texto */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.text-content h2 {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.text-content p {
+  margin: 0 auto;
+  max-width: 80%; /* Limita el ancho del texto */
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  background-color: #FF3F4F;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  visibility: hidden;
+}
+
+.footer.visible {
+  visibility: visible;
+}
+
+.social-links a img {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+/* Animación de revelado */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Margen superior/inferior */
+.margin-vertical {
+  margin: 300px 0;
+}
+
+.margin-bottom {
+  margin-bottom: 40px;
+}
+
+.margin-top-only {
+  margin-top: 300px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.small-video {
+  max-width: 50%;
+  border: none;
+  border-radius: 0;
+  object-fit: cover;
+}
+/* Sección fila: imagen y texto centrados con márgenes */
+.row-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px; /* Espaciado general */
+  padding: 72px 0;
+  margin: 0 auto;
+  width: 60%; /* Deja un 20% de margen en los lados */
+}
+
+/* Imagen alineada al centro */
+.row-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.responsive-image {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Divisor vertical centrado */
+.vertical-divider {
+  width: 2px; /* Grosor fijo */
+  height: 450px; /* Ocupa el 90% de la altura del contenedor */
+  background: linear-gradient(
+    to bottom, 
+    rgba(68, 68, 68, 0) 0%,  /* Transparente en la parte superior */
+    #444444 30%,             /* Gris oscuro cerca del centro */
+    #444444 70%,             /* Gris oscuro cerca del centro */
+    rgba(68, 68, 68, 0) 100% /* Transparente en la parte inferior */
+  );
+  margin: auto; /* Centrado verticalmente */
+  border-radius: 8px; /* Bordes más redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade un efecto de sombra suave */
+  transition: transform 0.3s ease-in-out; /* Transición suave para posibles animaciones */
+}
+
+/* Efecto de interacción (opcional) */
+
+
+/* Texto alineado al centro */
+.row-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.text-content h2 {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.text-content p {
+  margin: 0 auto;
+  max-width: 90%; /* Mantiene el texto legible */
+  line-height: 1.8;
+  text-align: center;
+}
+
+.footer {
+  background-color: #FF3F4F; /* Fondo rojo brillante */
+  color: white; /* Texto blanco */
+  padding: 40px 20px; /* Espaciado general */
+  text-align: center;
+  font-size: 1rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espacio entre secciones */
+}
+
+.social-links {
+  display: flex;
+  gap: 15px; /* Espaciado entre íconos */
+}
+
+.social-icon {
+  color: white; /* Color de los íconos */
+  font-size: 2rem; /* Tamaño de los íconos */
+  transition: transform 0.3s, color 0.3s; /* Animación suave */
+}
+
+.social-icon:hover {
+  transform: scale(1.2); /* Agranda ligeramente los íconos al pasar el cursor */
+  color: #dddddd; /* Cambia a un color gris claro */
+}
+
+.contact-info p {
+  margin: 5px 0; /* Espaciado vertical entre líneas */
+}
+
+.contact-info a {
+  color: white;
+  text-decoration: underline; /* Subraya los enlaces */
+}
+
+.contact-info a:hover {
+  color: #dddddd; /* Cambia a gris claro al pasar el cursor */
+}
+
+.footer-rights {
+  margin-top: 20px; /* Separación adicional para claridad */
+  font-size: 0.9rem; /* Tamaño de texto reducido */
+  opacity: 0.8; /* Reduce un poco la opacidad */
+}
+

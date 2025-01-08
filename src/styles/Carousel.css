@@ -68,23 +68,41 @@ body {
   transition: transform 0.15s ease-out; /* Animación rápida de entrada */
 }
 
-.scroll-indicator, .scroll-indicator__text {
+.scroll-indicator {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.scroll-indicator {
   text-transform: uppercase;
-  font-size: 20px;
-  font-family: circular-bold, sans-serif;
-  color: hsla(0, 0%, 100%, .6);
+  font-size: 12px;
+  font-family: sans-serif;
+  color: hsla(0, 0%, 100%, 0.6);
+  bottom: -50px; /* Sube o baja este valor */
   z-index: 1;
-  bottom: 20px; /* Ajusta según sea necesario */
-}
-body * {
-  -webkit-font-smoothing: antialiased !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
 }
 
-.scroll-indicator__line { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%) scaleY(0); /* Comienza sin altura visible */ transform-origin: top; /* Punto de origen de la transformación en la parte superior */ width: 2px; height: 80px; /* Altura completa de la línea */ background: linear-gradient(180deg, hsla(0, 0%, 100%, .6) 50%, hsla(0, 0%, 100%, 0) 100%); animation: grow-shrink 3s ease-in-out infinite; /* Aplicar la animación */ } /* Animación para crecer y desaparecer de arriba a abajo */ @keyframes grow-shrink { 0% { transform: translateX(-50%) scaleY(0); /* Línea invisible al inicio */ } 50% { transform: translateX(-50%) scaleY(1); /* Crece hasta altura completa */ } 100% { transform: translateX(-50%) scaleY(0); /* Desaparece de arriba hacia abajo */
-/* Suavizado de fuente para mejor renderizado */
+.scroll-indicator__line {
+  position: relative;
+  width: 3px;
+  height: 120px; /* Ajusta el largo deseado */
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0%, hsla(0, 0%, 100%, 0.6) 50%, hsla(0, 0%, 100%, 0) 100%);
+  background-size: 100% 300%; /* Extiende el área del gradiente */
+  animation: line-scroll 3s ease-in-out infinite;
+}
+
+@keyframes line-scroll {
+  0% {
+    background-position: 0 -150px; /* La línea comienza "vacía" */
+  }
+  100% {
+    background-position: 0 150px; /* La línea se llena gradualmente */
+  }
+}
+
+.white-bg {
+  background-color: white !important;
+  transition: background-color 0.3s ease-in-out; /* Transición suave */
+}
